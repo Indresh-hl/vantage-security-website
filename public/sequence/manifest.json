@@ -1,0 +1,12 @@
+{
+  "frameCount": 241,
+  "fps": 16,
+  "width": 1440,
+  "format": "webp",
+  "pattern": "/sequence/frame_{index}.webp",
+  "padLength": 4,
+  "generatedAt": "2026-11-22T19:08:29.257Z",
+  "sourceFiles": [
+    "campus-sequence.mp4"
+  ]
+}

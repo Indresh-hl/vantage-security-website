@@ -1,0 +1,27 @@
+# Dependencies & build output
+node_modules/
+dist/
+.vite/
+*.tsbuildinfo
+
+# Environment & logs
+.env
+.env.*
+!.env.example
+*.log
+npm-debug.log*
+
+# Editor & OS files
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+
+# Large local video production & raw source media (optimized WebP frames live in public/sequence/)
+video-extend/
+/*.mp4
+/*.mov
+media/scroll-source/*.mp4
+media/scroll-source/*.mov
+media/scroll-source/*.mkv
+media/scroll-source/*.webm

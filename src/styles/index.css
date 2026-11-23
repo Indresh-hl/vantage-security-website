@@ -1,0 +1,305 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-obsidian: #06080c;
+    --bg-carbon: #0e1117;
+    --bg-paper: #ffffff;
+    --bg-slate-paper: #f4f6f9;
+    --ink-dark: #0e1117;
+    --ink-muted: #525b6a;
+    --ink-light: #f8fafc;
+    --ink-light-muted: #94a3b8;
+    --accent-charcoal: #3a404b;
+    --accent-charcoal-deep: #23272f;
+    --accent-amber: #ea580c;
+    --border-dark: rgba(255, 255, 255, 0.12);
+    --border-light: rgba(14, 17, 23, 0.12);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-obsidian);
+    color: var(--ink-light);
+  }
+
+  /* Prevent native CSS scroll-behavior from fighting Lenis inertial smooth scrolling */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+    scroll-behavior: auto !important;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    margin: 0;
+    overflow-x: clip;
+  }
+
+  :focus-visible {
+    outline: 2px solid #646c79;
+    outline-offset: 3px;
+  }
+}
+
+/* Unified Bold Geometric Display System — Unbounded across Brand, Headlines, Nav & Numerals */
+.font-brand {
+  font-family: 'Unbounded', 'Inter', system-ui, sans-serif;
+}
+
+.font-display {
+  font-family: 'Unbounded', 'Inter', system-ui, sans-serif;
+}
+
+.font-nav {
+  font-family: 'Unbounded', 'Inter', system-ui, sans-serif;
+}
+
+.font-mono-tech {
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Fallback Atmospheric Horizon Gradients (Reduced Motion) */
+.horizon-dark-to-light {
+  background:
+    radial-gradient(120% 85% at 50% 62%, rgba(90, 98, 112, 0.68) 0%, rgba(43, 48, 58, 0.42) 38%, rgba(6, 8, 12, 0) 74%),
+    linear-gradient(
+      180deg,
+      #06080c 0%,
+      #14181f 22%,
+      #2b303a 48%,
+      #5a6270 66%,
+      #d4d8df 82%,
+      #ffffff 100%
+    );
+}
+
+.horizon-light-to-dark {
+  background:
+    radial-gradient(120% 85% at 50% 38%, rgba(90, 98, 112, 0.65) 0%, rgba(43, 48, 58, 0.38) 40%, rgba(6, 8, 12, 0) 76%),
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #d4d8df 18%,
+      #5a6270 36%,
+      #2b303a 56%,
+      #14181f 78%,
+      #06080c 100%
+    );
+}
+
+/* Concentric Radar Rings Background */
+.radar-rings {
+  background-image:
+    radial-gradient(circle at center, transparent 15%, rgba(255, 255, 255, 0.055) 15.1%, transparent 15.3%),
+    radial-gradient(circle at center, transparent 30%, rgba(255, 255, 255, 0.05) 30.1%, transparent 30.3%),
+    radial-gradient(circle at center, transparent 46%, rgba(255, 255, 255, 0.045) 46.1%, transparent 46.3%),
+    radial-gradient(circle at center, transparent 62%, rgba(255, 255, 255, 0.035) 62.1%, transparent 62.3%);
+}
+
+/* Preloader concentric frosted radar sweep (WCAG-safe slow continuous rotation) */
+@keyframes radar-sweep-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.preloader-radar-sweep {
+  @media (prefers-reduced-motion: no-preference) {
+    animation: radar-sweep-spin 3.2s linear infinite;
+  }
+}
+
+/* Progressive-enhancement native CSS Scroll-Driven subtle optical depth lift for editorial panels */
+@media (prefers-reduced-motion: no-preference) {
+  @supports ((animation-timeline: view()) and (animation-range: entry)) {
+    @keyframes glass-depth-enter {
+      from {
+        opacity: 0.72;
+        transform: translateY(18px) scale(0.992);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .scroll-glass-card {
+      animation: glass-depth-enter auto ease-out backwards;
+      animation-timeline: view();
+      animation-range: entry 0% entry 42%;
+    }
+  }
+}
+
+/* Native CSS Scroll-Driven Vertical Verification Spine Beam (Progressive Enhancement per Modern Web Guidance) */
+@media (prefers-reduced-motion: no-preference) {
+  @supports ((animation-timeline: scroll()) and (animation-range: 0% 100%)) {
+    @keyframes verified-spine-fill {
+      from {
+        transform: scaleY(0.06);
+      }
+      to {
+        transform: scaleY(1);
+      }
+    }
+
+    .verified-spine-beam {
+      transform-origin: top center;
+      animation: verified-spine-fill auto linear both;
+      animation-timeline: view();
+      animation-range: entry 20% exit 80%;
+    }
+  }
+}
+
+/* Vertical downward typography for the Verified Green Center Spine */
+.vertical-down-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+/* Gentle emerald shield radar pulse (WCAG 2.3.1 safe: slow, low-contrast, no rapid flashing) */
+@keyframes verified-shield-pulse {
+  0%, 100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.14;
+    transform: scale(1.24);
+  }
+}
+
+.verified-shield-ring {
+  @media (prefers-reduced-motion: no-preference) {
+    animation: verified-shield-pulse 3s ease-in-out infinite;
+  }
+}
+
+/* Subtle live pulse dot (WCAG safe: slow, gentle, never flashes) */
+@keyframes pulse-calm {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(0.88);
+  }
+}
+
+.telemetry-dot {
+  @media (prefers-reduced-motion: no-preference) {
+    animation: pulse-calm 2.6s ease-in-out infinite;
+  }
+}
+
+/* Native <details> Accordion (Modern Web Guidance) */
+.faq-accordion details > summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+.faq-accordion details > summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-accordion details > summary .faq-plus {
+  transform: rotate(0deg);
+}
+
+.faq-accordion details[open] > summary .faq-plus {
+  transform: rotate(45deg);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .faq-accordion details > summary .faq-plus {
+    transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+}
+
+.faq-accordion details::details-content {
+  interpolate-size: allow-keywords;
+  overflow: clip;
+  contain: layout;
+}
+
+.faq-accordion details:not([open])::details-content {
+  block-size: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .faq-accordion details::details-content {
+    transition: block-size, content-visibility, display;
+    transition-duration: 0.32s;
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    transition-behavior: allow-discrete;
+  }
+}
+
+/* Footer Marquee (WCAG 2.2.2 pausable + prefers-reduced-motion compliant) */
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.footer-marquee-track {
+  display: flex;
+  width: max-content;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .footer-marquee-track:not(.is-paused) {
+    animation: marquee-scroll 34s linear infinite;
+  }
+}
+
+.footer-marquee-track:hover,
+.footer-marquee-track:focus-within {
+  animation-play-state: paused;
+}
+
+/* Form :user-invalid / :user-valid styling (Validate Input After Interaction) */
+.assessment-field .field-error {
+  display: none;
+}
+
+.assessment-field :is(input, select, textarea):is(:user-invalid, .user-invalid-fallback) {
+  border-color: #f87171;
+  background-color: rgba(248, 113, 113, 0.08);
+}
+
+.assessment-field :is(input, select, textarea):is(:user-invalid, .user-invalid-fallback) + .field-error {
+  display: flex;
+}
+
+.assessment-field :is(input, select, textarea):user-valid {
+  border-color: rgba(52, 211, 153, 0.65);
+}
+
+/* Accessible Visually Hidden Utility */
+.visually-hidden:where(:not(:focus-within, :active)) {
+  position: absolute !important;
+  clip-path: inset(50%) !important;
+  overflow: hidden !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  white-space: nowrap !important;
+}
